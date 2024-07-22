@@ -1,0 +1,66 @@
+﻿@model XboxGamepassMVC.Models.ModelPago
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Pago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago_Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago_Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago_Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago_Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago_Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago_Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pago_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pago_Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Pago_ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+</p>

@@ -1,0 +1,72 @@
+﻿@model XboxGamepassMVC.Models.ModelCliente
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Cliente</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Cli_Cedula)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cli_Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cli_Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cli_Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cli_Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cli_Apellido, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cli_Apellido, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cli_BirthDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Cli_BirthDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+            @Html.ValidationMessageFor(model => model.Cli_BirthDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cli_Pais, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cli_Pais, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cli_Pais, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cli_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Cli_Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Cli_Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-primary" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary"})
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

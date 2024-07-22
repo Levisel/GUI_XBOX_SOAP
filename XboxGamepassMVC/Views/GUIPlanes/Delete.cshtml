@@ -1,0 +1,56 @@
+﻿@model XboxGamepassMVC.Models.ModelPlan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Estás realmente seguro de eliminarlo?</h3>
+<div>
+    <h4>Plan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Plataforma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Plataforma)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

@@ -1,0 +1,69 @@
+﻿@model XboxGamepassMVC.Models.ModelSuscripcion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Suscripción</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_RenovacionAuto)
+        </dt>
+
+        <dd>
+            @{
+                var isRenovacionAuto = Model.Sus_RenovacionAuto.HasValue && Model.Sus_RenovacionAuto.Value ? "Sí" : "No";
+            }
+            <button type="button" class="btn @(Model.Sus_RenovacionAuto.HasValue && Model.Sus_RenovacionAuto.Value ? "btn-success" : "btn-danger")">@isRenovacionAuto</button>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Sus_ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+</p>

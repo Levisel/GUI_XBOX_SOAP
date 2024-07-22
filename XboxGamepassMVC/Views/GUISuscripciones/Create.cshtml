@@ -1,0 +1,90 @@
+﻿@model XboxGamepassMVC.Models.ModelSuscripcion
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Suscripción</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sus_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Sus_ID, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Sus_ID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Plan_Nombre, "Plan", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Plan_ID", (SelectList)ViewBag.Plan_Nombre, "Seleccione un plan", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Plan_Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sus_StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Sus_StartDate, "{0:yyyy-MM-dd}", new { @class = "form-control rounded", type = "date" })
+            @Html.ValidationMessageFor(model => model.Sus_StartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sus_EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Sus_EndDate, "{0:yyyy-MM-dd}", new { @class = "form-control rounded", type = "date" })
+            @Html.ValidationMessageFor(model => model.Sus_EndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sus_Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Sus_Estado", (SelectList)ViewBag.Sus_Estado, "Seleccione el estado", htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Sus_Estado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Sus_RenovacionAuto, htmlAttributes: new { @class = "control-label col-md-2 " })
+        <div class="col-md-10">
+            <div class="btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-info">
+                    <input type="radio" id="option1" name="Sus_RenovacionAuto" autocomplete="off" value="true"> Si
+                </label>
+                <label class="btn btn-warning">
+                    <input type="radio" id="option2" name="Sus_RenovacionAuto" autocomplete="off" value="false"> No
+                </label>
+            </div>
+            @Html.ValidationMessageFor(model => model.Sus_RenovacionAuto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Crear" class="btn btn-success" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

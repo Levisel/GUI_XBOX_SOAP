@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XboxGamepassMVC", "XboxGamepassMVC\XboxGamepassMVC.csproj", "{3FF80A6A-0183-4564-8B3C-C446D6312824}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF80A6A-0183-4564-8B3C-C446D6312824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF80A6A-0183-4564-8B3C-C446D6312824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF80A6A-0183-4564-8B3C-C446D6312824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF80A6A-0183-4564-8B3C-C446D6312824}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D04D6F0F-D860-4A0E-A9F3-2D3D4C6154D2}
+	EndGlobalSection
+EndGlobal

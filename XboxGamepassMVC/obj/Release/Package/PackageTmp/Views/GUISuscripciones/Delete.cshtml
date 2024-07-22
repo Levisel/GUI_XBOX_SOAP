@@ -1,0 +1,67 @@
+﻿@model XboxGamepassMVC.Models.ModelSuscripcion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Estás realmente seguro de eliminarlo?</h3>
+<div>
+    <h4>Suscripción</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sus_Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sus_RenovacionAuto)
+        </dt>
+
+        <dd>
+            @{
+                var isRenovacionAuto = Model.Sus_RenovacionAuto.HasValue && Model.Sus_RenovacionAuto.Value ? "Sí" : "No";
+            }
+            <button type="button" class="btn @(Model.Sus_RenovacionAuto.HasValue && Model.Sus_RenovacionAuto.Value ? "btn-success" : "btn-warning")">@isRenovacionAuto</button>
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>

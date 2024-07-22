@@ -1,0 +1,49 @@
+﻿@model XboxGamepassMVC.Models.ModelPlan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Plan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Duracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Duracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Plan_Plataforma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Plan_Plataforma)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Plan_ID }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+</p>

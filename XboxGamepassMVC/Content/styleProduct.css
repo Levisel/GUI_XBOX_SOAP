@@ -1,0 +1,65 @@
+/* Estilos para el Menú de comida*/
+
+.items-style {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/* Contenedor de Productos del Menú */
+.product {
+    overflow: hidden;
+    background-size: cover; /* Hace que la imagen de fondo cubra todo el contenedor */
+    color: #fff; /* Cambia el color del texto a blanco */
+    text-align: center;
+    width: 350px;
+    height: 340px;
+    padding: 4rem;
+    /* Se aplica 4rem de relleno a todos los lados para ajustar la imagen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1.2rem;
+    margin: 2rem;
+    box-shadow: 5px 15px 25px #03000057;
+}
+
+/* Estilo para el título del producto */
+.product .product-title {
+    font-size: 1.5rem; /* Cambia el tamaño del título */
+    font-weight: bold; /* Pone el título en negrita */
+    margin-bottom: 10px; /* Ajusta el margen inferior del título */
+}
+
+/* Letra en Descripcion y Precio del Producto */
+.product .product-price {
+    font-size: 18px;
+}
+
+/*Tamaño del Titulo del apartado*/
+.products h2 {
+    font-size: 2.5rem;
+}
+.product a:link,
+/* Agrega estilos a la clase para el botón de compra */
+
+.comprar-button {
+    color: #ececec;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #107c10;
+    padding: 1.2rem 3rem;
+    border-radius: 1rem;
+    margin-top: -0.5rem;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.product a:hover {
+    transform: scale(1.1);
+    color: #ececec;
+    cursor: pointer;
+}

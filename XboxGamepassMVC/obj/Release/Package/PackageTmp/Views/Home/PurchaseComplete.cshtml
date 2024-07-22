@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "PurchaseComplete";
+}
+
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle text-success fa-5x mb-3"></i>
+                        <h2 class="text-success mb-3">¡Compra completada con éxito!</h2>
+                        <p class="mb-4">Por favor, dirígete a tu banca web para finalizar el pago.</p>
+                        <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Volver al inicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

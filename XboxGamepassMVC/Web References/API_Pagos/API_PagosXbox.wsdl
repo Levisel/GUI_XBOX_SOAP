@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Insertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pago" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Pago">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Pago_ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pago_Codigo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sus_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pago_Monto" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pago_Fecha" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pago_Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Pago_LogicalDelete" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suscripcion" type="tns:Suscripcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Cedula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Apellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cli_BirthDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Pais" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cli_Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cli_LogicalDelete" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pagos" type="tns:ArrayOfPago" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPago">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Pago" nillable="true" type="tns:Pago" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Suscripcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Sus_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Plan_ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sus_StartDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sus_EndDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sus_Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sus_RenovacionAuto" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sus_LogicalDelete" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pagos" type="tns:ArrayOfPago" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan" type="tns:Plan" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Plan">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Plan_ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan_Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan_Duracion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Plan_Precio" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Plan_Plataforma" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Plan_LogicalDelete" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suscripcions" type="tns:ArrayOfSuscripcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSuscripcion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Suscripcion" nillable="true" type="tns:Suscripcion" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Actualizar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pago" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Eliminar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Listar">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarResult" type="tns:ArrayOfPago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPorIdResult" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPorCodigo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPorCodigoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPorCodigoResult" type="tns:Pago" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertarSoapIn">
+    <wsdl:part name="parameters" element="tns:Insertar" />
+  </wsdl:message>
+  <wsdl:message name="InsertarSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarSoapIn">
+    <wsdl:part name="parameters" element="tns:Actualizar" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapIn">
+    <wsdl:part name="parameters" element="tns:Eliminar" />
+  </wsdl:message>
+  <wsdl:message name="EliminarSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarSoapIn">
+    <wsdl:part name="parameters" element="tns:Listar" />
+  </wsdl:message>
+  <wsdl:message name="ListarSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarPorId" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorCodigoSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorCodigoSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="API_PagosXboxSoap">
+    <wsdl:operation name="Insertar">
+      <wsdl:input message="tns:InsertarSoapIn" />
+      <wsdl:output message="tns:InsertarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <wsdl:input message="tns:ActualizarSoapIn" />
+      <wsdl:output message="tns:ActualizarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <wsdl:input message="tns:EliminarSoapIn" />
+      <wsdl:output message="tns:EliminarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Listar">
+      <wsdl:input message="tns:ListarSoapIn" />
+      <wsdl:output message="tns:ListarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <wsdl:input message="tns:buscarPorIdSoapIn" />
+      <wsdl:output message="tns:buscarPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorCodigo">
+      <wsdl:input message="tns:buscarPorCodigoSoapIn" />
+      <wsdl:output message="tns:buscarPorCodigoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="API_PagosXboxSoap" type="tns:API_PagosXboxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insertar">
+      <soap:operation soapAction="http://tempuri.org/Insertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <soap:operation soapAction="http://tempuri.org/Actualizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Listar">
+      <soap:operation soapAction="http://tempuri.org/Listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <soap:operation soapAction="http://tempuri.org/buscarPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/buscarPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="API_PagosXboxSoap12" type="tns:API_PagosXboxSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insertar">
+      <soap12:operation soapAction="http://tempuri.org/Insertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Actualizar">
+      <soap12:operation soapAction="http://tempuri.org/Actualizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Eliminar">
+      <soap12:operation soapAction="http://tempuri.org/Eliminar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Listar">
+      <soap12:operation soapAction="http://tempuri.org/Listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <soap12:operation soapAction="http://tempuri.org/buscarPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorCodigo">
+      <soap12:operation soapAction="http://tempuri.org/buscarPorCodigo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="API_PagosXbox">
+    <wsdl:port name="API_PagosXboxSoap" binding="tns:API_PagosXboxSoap">
+      <soap:address location="http://localhost:8081/API_PagosXbox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="API_PagosXboxSoap12" binding="tns:API_PagosXboxSoap12">
+      <soap12:address location="http://localhost:8081/API_PagosXbox.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ListarClientesConSuscripcionActivaInactiva">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarClientesConSuscripcionActivaInactivaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarClientesConSuscripcionActivaInactivaResult" type="tns:ArrayOfSPClientesConSuscripcionActivaInactiva_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPClientesConSuscripcionActivaInactiva_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPClientesConSuscripcionActivaInactiva_Result" nillable="true" type="tns:SPClientesConSuscripcionActivaInactiva_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPClientesConSuscripcionActivaInactiva_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ClientesConSuscripcionActiva" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientesSinSuscripcionActiva" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarClientesConRenovacionAutomatica">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarClientesConRenovacionAutomaticaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarClientesConRenovacionAutomaticaResult" type="tns:ArrayOfSPObtenerClientesConRenovacionAutomatica_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPObtenerClientesConRenovacionAutomatica_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPObtenerClientesConRenovacionAutomatica_Result" nillable="true" type="tns:SPObtenerClientesConRenovacionAutomatica_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPObtenerClientesConRenovacionAutomatica_Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroClientes" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RenovacionAutomatica" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarClientesPorPaisYPlan">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarClientesPorPaisYPlanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarClientesPorPaisYPlanResult" type="tns:ArrayOfSPObtenerClientesPorPaisYPlan_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPObtenerClientesPorPaisYPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPObtenerClientesPorPaisYPlan_Result" nillable="true" type="tns:SPObtenerClientesPorPaisYPlan_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPObtenerClientesPorPaisYPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroClientes" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombrePlan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DuracionPlan" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarClientesPorPlataforma">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarClientesPorPlataformaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarClientesPorPlataformaResult" type="tns:ArrayOfSPObtenerClientesPorPlataforma_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPObtenerClientesPorPlataforma_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPObtenerClientesPorPlataforma_Result" nillable="true" type="tns:SPObtenerClientesPorPlataforma_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPObtenerClientesPorPlataforma_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Plataforma" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroClientes" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ListarNumeroClientesPorPais">
+        <s:complexType />
+      </s:element>
+      <s:element name="ListarNumeroClientesPorPaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListarNumeroClientesPorPaisResult" type="tns:ArrayOfSPObtenerNumeroClientesPorPais_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSPObtenerNumeroClientesPorPais_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SPObtenerNumeroClientesPorPais_Result" nillable="true" type="tns:SPObtenerNumeroClientesPorPais_Result" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SPObtenerNumeroClientesPorPais_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Pais" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroClientes" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="buscarPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombrePlan" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarPorIdResult" type="tns:SPObtenerPagosPorPlan_Result" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SPObtenerPagosPorPlan_Result">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NombrePlan" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumeroPagos" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ListarClientesConSuscripcionActivaInactivaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarClientesConSuscripcionActivaInactiva" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesConSuscripcionActivaInactivaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarClientesConSuscripcionActivaInactivaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesConRenovacionAutomaticaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarClientesConRenovacionAutomatica" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesConRenovacionAutomaticaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarClientesConRenovacionAutomaticaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesPorPaisYPlanSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarClientesPorPaisYPlan" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesPorPaisYPlanSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarClientesPorPaisYPlanResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesPorPlataformaSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarClientesPorPlataforma" />
+  </wsdl:message>
+  <wsdl:message name="ListarClientesPorPlataformaSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarClientesPorPlataformaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListarNumeroClientesPorPaisSoapIn">
+    <wsdl:part name="parameters" element="tns:ListarNumeroClientesPorPais" />
+  </wsdl:message>
+  <wsdl:message name="ListarNumeroClientesPorPaisSoapOut">
+    <wsdl:part name="parameters" element="tns:ListarNumeroClientesPorPaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarPorId" />
+  </wsdl:message>
+  <wsdl:message name="buscarPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarPorIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="API_StoredProceduresXboxSoap">
+    <wsdl:operation name="ListarClientesConSuscripcionActivaInactiva">
+      <wsdl:input message="tns:ListarClientesConSuscripcionActivaInactivaSoapIn" />
+      <wsdl:output message="tns:ListarClientesConSuscripcionActivaInactivaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesConRenovacionAutomatica">
+      <wsdl:input message="tns:ListarClientesConRenovacionAutomaticaSoapIn" />
+      <wsdl:output message="tns:ListarClientesConRenovacionAutomaticaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPaisYPlan">
+      <wsdl:input message="tns:ListarClientesPorPaisYPlanSoapIn" />
+      <wsdl:output message="tns:ListarClientesPorPaisYPlanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPlataforma">
+      <wsdl:input message="tns:ListarClientesPorPlataformaSoapIn" />
+      <wsdl:output message="tns:ListarClientesPorPlataformaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarNumeroClientesPorPais">
+      <wsdl:input message="tns:ListarNumeroClientesPorPaisSoapIn" />
+      <wsdl:output message="tns:ListarNumeroClientesPorPaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <wsdl:input message="tns:buscarPorIdSoapIn" />
+      <wsdl:output message="tns:buscarPorIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="API_StoredProceduresXboxSoap" type="tns:API_StoredProceduresXboxSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarClientesConSuscripcionActivaInactiva">
+      <soap:operation soapAction="http://tempuri.org/ListarClientesConSuscripcionActivaInactiva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesConRenovacionAutomatica">
+      <soap:operation soapAction="http://tempuri.org/ListarClientesConRenovacionAutomatica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPaisYPlan">
+      <soap:operation soapAction="http://tempuri.org/ListarClientesPorPaisYPlan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPlataforma">
+      <soap:operation soapAction="http://tempuri.org/ListarClientesPorPlataforma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarNumeroClientesPorPais">
+      <soap:operation soapAction="http://tempuri.org/ListarNumeroClientesPorPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <soap:operation soapAction="http://tempuri.org/buscarPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="API_StoredProceduresXboxSoap12" type="tns:API_StoredProceduresXboxSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarClientesConSuscripcionActivaInactiva">
+      <soap12:operation soapAction="http://tempuri.org/ListarClientesConSuscripcionActivaInactiva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesConRenovacionAutomatica">
+      <soap12:operation soapAction="http://tempuri.org/ListarClientesConRenovacionAutomatica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPaisYPlan">
+      <soap12:operation soapAction="http://tempuri.org/ListarClientesPorPaisYPlan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarClientesPorPlataforma">
+      <soap12:operation soapAction="http://tempuri.org/ListarClientesPorPlataforma" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarNumeroClientesPorPais">
+      <soap12:operation soapAction="http://tempuri.org/ListarNumeroClientesPorPais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarPorId">
+      <soap12:operation soapAction="http://tempuri.org/buscarPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="API_StoredProceduresXbox">
+    <wsdl:port name="API_StoredProceduresXboxSoap" binding="tns:API_StoredProceduresXboxSoap">
+      <soap:address location="http://localhost:8081/API_StoredProceduresXbox.asmx" />
+    </wsdl:port>
+    <wsdl:port name="API_StoredProceduresXboxSoap12" binding="tns:API_StoredProceduresXboxSoap12">
+      <soap12:address location="http://localhost:8081/API_StoredProceduresXbox.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

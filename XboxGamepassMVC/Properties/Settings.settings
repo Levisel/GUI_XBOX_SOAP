@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="XboxGamepassMVC.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="XboxGamepassMVC_API_Clientes_API_XboxGamepass" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8081/API_ClientesXbox.asmx</Value>
+    </Setting>
+    <Setting Name="XboxGamepassMVC_API_Pagos_API_PagosXbox" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8081/API_PagosXbox.asmx</Value>
+    </Setting>
+    <Setting Name="XboxGamepassMVC_API_Planes_API_PlanesXbox" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8081/API_PlanesXbox.asmx</Value>
+    </Setting>
+    <Setting Name="XboxGamepassMVC_API_Suscripciones_API_SuscripcionesXbox" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8081/API_SuscripcionesXbox.asmx</Value>
+    </Setting>
+    <Setting Name="XboxGamepassMVC_API_StoredProcedures_API_StoredProceduresXbox" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8081/API_StoredProceduresXbox.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

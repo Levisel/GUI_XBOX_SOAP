@@ -1,0 +1,467 @@
+﻿@{
+    ViewBag.Title = "Carrito";
+}
+
+<h2>Carrito</h2>
+
+@*CONTENIDO*@
+
+<style>
+
+
+    .carrito-items {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #carrito-lista {
+        list-style: none;
+        padding: 0;
+    }
+
+    #carrito-lista li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #precio {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    #openModalButton{
+        display: block;
+        margin: 100px auto; /* Alineación horizontal en el centro */
+        padding: 7px 10px;
+        font-weight: 550;
+    }
+
+    /* Estilos para cada elemento de la lista del carrito */
+    .product-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px 0;
+        height: 100px; /* Ajusta la altura deseada */
+        overflow: hidden; /* Evita las barras de desplazamiento y oculta contenido adicional */
+    }
+
+    /* Estilos para la imagen del producto */
+    .item-image {
+        max-width: 80px; /* Ajusta el ancho de la imagen según sea necesario */
+        margin-right: 10px; /* Espacio entre la imagen y otros elementos */
+    }
+
+    /* Estilos para el nombre del producto */
+    .item-name {
+        font-weight: bold;
+        margin-left: 10px;
+        position: absolute;
+    }
+
+    /* Estilos para el precio, la cantidad y los botones de aumento y disminución */
+    .item-duration {
+        margin-left: 240px;
+        position: absolute;
+        font-style: italic;
+    }
+
+    /* Estilos para el precio del producto */
+    .item-price {
+        font-weight: bold;
+        color: #107c10;
+        position: absolute;
+        margin-left: 595px;
+    }
+
+    /* Estilos para la cantidad del producto */
+    .item-quantity {
+        font-size: 0.9rem;
+        background-color: #0000002a;
+        padding: 5px 6px;
+        border-radius: 5px;
+        position: absolute;
+        margin-left: 440px;
+    }
+
+    /* Estilos para los botones de aumentar, disminuir y eliminar */
+    .boton-aumentar {
+        background-color: #0000002a;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 1px 10px;
+        border-radius: 7px;
+        margin-top: 5px;
+        position: absolute;
+        margin-left: 800px;
+    }
+    .boton-disminuir {
+        background-color: #0000002a;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 1px 10px;
+        border-radius: 7px;
+        margin-top: 5px;
+        position: absolute;
+        margin-left: 900px;
+
+    }
+    .boton-aumentar:hover, .boton-disminuir:hover {
+        transform: scale(1.180);
+    }
+
+    /* Estilos para el botón de eliminar (ícono de basurero) */
+    .delete-button {
+        background-color: #ff0000;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1100px;
+        position: absolute;
+
+}
+
+/* Estilos para el ícono de basurero en el botón de eliminar */
+.delete-button i {
+    color: white;
+    font-size: 1rem;
+}
+
+.delete-button:hover {
+    transform: scale(1.180);
+}
+/* Tus estilos para pantallas más grandes aquí */
+
+/* Media query para dispositivos móviles (ancho máximo de 767px) */
+
+</style>
+
+
+@using (Html.BeginForm("Comprar", "Home", FormMethod.Post, new { id = "formulario" }))
+{
+    <!-- Agrega campos ocultos para almacenar los datos necesarios -->
+    @Html.Hidden("productosData")
+    @Html.Hidden("subtotalData")
+    @Html.Hidden("clienteId")
+
+    <div class="carrito-items">
+        <ul id="carrito-lista">
+            <!-- Los elementos del carrito se mostrarán aquí -->
+        </ul>
+        <p id="precio">Total: $0.00</p>
+    </div>
+    <button id="openModalButton" type="button" class="btn btn-success">Comprar</button>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="vaciarCarritoModal" tabindex="-1" aria-labelledby="vaciarCarritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vaciarCarritoModalLabel">Comprar Suscripción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor, ingrese su cédula de identidad (CI):</p>
+                <input type="text" class="form-control" id="cedula" maxlength="10" pattern="[0-9]*">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="vaciarCarritoButton" type="button" class="btn btn-info">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cartItemsContainer = document.getElementById('carrito-lista');
+        const totalPriceElement = document.getElementById('precio');
+        const cartCount = document.getElementById('cart-count'); // Elemento del carrito
+
+
+        // FunciÃ³n para mostrar un mensaje si el carrito estÃ¡ vacÃ­o
+        function mostrarMensajeCarritoVacio() {
+            if (cartItemsContainer.childElementCount === 0) {
+                const emptyCartMessage = document.createElement('p');
+                emptyCartMessage.textContent = 'El carrito estÃ¡ vacÃ­o... Â¡Puedes comprar una suscripciÃ³n en planes!';
+                cartItemsContainer.appendChild(emptyCartMessage);
+            }
+        }
+
+        // Llama a la funciÃ³n para mostrar el mensaje de carrito vacÃ­o despuÃ©s de un breve retraso
+        setTimeout(mostrarMensajeCarritoVacio, 10);
+
+        // Cargar y mostrar elementos del carrito desde localStorage
+        function mostrarElementosCarrito() {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            let totalPrice = 0;
+            cartItemsContainer.innerHTML = ''; // Limpia los elementos previos del carrito
+
+            carrito.forEach((item, index) => {
+                const listItem = document.createElement('li');
+                const itemName = document.createElement('span');
+                const itemDuration = document.createElement('span');
+                const itemPrice = document.createElement('span');
+                const itemQuantity = document.createElement('span'); // Agrega este elemento para mostrar la cantidad
+                const increaseButton = document.createElement('button');
+                const decreaseButton = document.createElement('button');
+                const deleteButton = document.createElement('button');
+                itemName.textContent = item.title;
+                itemDuration.textContent = item.duration;
+                itemPrice.textContent = `$${(item.price * (item.quantity || 1)).toFixed(2)}`; // Calcula el precio total
+                itemQuantity.textContent = `x ${item.quantity || 1}`; // Muestra la cantidad
+                increaseButton.textContent = '+';
+                decreaseButton.textContent = '-';
+                //AplicaciÃ³n de estilos
+                listItem.classList.add('product-item');
+                itemName.classList.add('item-name');
+                itemDuration.classList.add('item-duration');
+                itemPrice.classList.add('item-price');
+                itemQuantity.classList.add('item-quantity');
+                increaseButton.classList.add('boton-aumentar');
+                decreaseButton.classList.add('boton-disminuir');
+                deleteButton.classList.add('delete-button');
+                // Crea un elemento <i> para el Ã­cono de basurero (Font Awesome)
+                const trashIcon = document.createElement('i');
+                trashIcon.classList.add('fas', 'fa-trash'); // Clases de Font Awesome
+
+                // Agrega el Ã­cono de basurero al botÃ³n de eliminar
+                deleteButton.appendChild(trashIcon);
+
+                listItem.appendChild(itemName);
+                listItem.appendChild(itemDuration);
+                listItem.appendChild(itemPrice);
+                listItem.appendChild(itemQuantity); // Agrega la cantidad al elemento del carrito
+                listItem.appendChild(increaseButton);
+                listItem.appendChild(decreaseButton);
+                listItem.appendChild(deleteButton);
+                cartItemsContainer.appendChild(listItem);
+
+                increaseButton.addEventListener('click', () => {
+                    // Asegura que cartItemCount sea un nÃºmero entero y, si no, inicialÃ­zalo en 0
+                    let cartItemCount = parseInt(localStorage.getItem('contadorCarro'), 10) || 0;
+
+                    // Aumentar la cantidad de productos en el carrito
+                    cartItemCount++;
+                    cartCount.textContent = cartItemCount;
+                    // Almacena el nuevo valor en localStorage
+                    localStorage.setItem('contadorCarro', cartItemCount);
+                    // Emitir un evento personalizado para notificar que el contador del carrito ha cambiado
+                    const cartUpdateEvent = new Event('cartUpdated');
+                    window.dispatchEvent(cartUpdateEvent);
+
+                    // Verifica si el producto ya existe en el carrito
+                    const existingItem = carrito.find(existing => existing.title === item.title);
+
+                    if (existingItem) {
+                        // Si el producto ya existe, aumenta su cantidad
+                        existingItem.quantity = (existingItem.quantity || 1) + 1;
+                    }
+
+                    // Actualiza el carrito en el almacenamiento local
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+                    // Llama a la funciÃ³n para volver a mostrar los elementos del carrito
+                    mostrarElementosCarrito();
+                });
+
+                decreaseButton.addEventListener('click', () => {
+                    // Disminuye la cantidad del producto en el carrito
+                    let cartItemCount = parseInt(localStorage.getItem('contadorCarro'), 10) || 0;
+                    // Aumentar la cantidad de productos en el carrito
+                    cartItemCount--;
+                    // Si el contador del carrito es menor que cero, establecerlo en cero
+                    if (cartItemCount < 0) {
+                        cartItemCount = 0;
+                    }
+                    cartCount.textContent = cartItemCount;
+                    // Almacena el nuevo valor en localStorage
+                    localStorage.setItem('contadorCarro', cartItemCount);
+                    // Emitir un evento personalizado para notificar que el contador del carrito ha cambiado
+                    const cartUpdateEvent = new Event('cartUpdated');
+                    window.dispatchEvent(cartUpdateEvent);
+
+                    if (item.quantity && item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        // Si la cantidad es 1 o menos, elimina el producto del carrito
+                        carrito.splice(index, 1);
+                        // Crear alerta de Bootstrap
+                        const alertDiv = document.createElement('div');
+                        alertDiv.classList.add('alert', 'alert-info', 'alert-dismissible', 'fade', 'position-fixed', 'bottom-0', 'end-0', 'show'); // AÃ±adir la clase 'show' para mostrar la alerta
+                        alertDiv.setAttribute('role', 'alert');
+                        alertDiv.style.zIndex = 1050; // Ajustar el z-index para que aparezca sobre otros elementos
+
+                        alertDiv.innerHTML = `
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        El producto ha sido eliminado exitosamente..
+                    `;
+
+                        document.body.appendChild(alertDiv);
+
+                        // Desaparece despuÃ©s de 3 segundos
+                        setTimeout(() => {
+                            alertDiv.remove();
+                        }, 3000);
+                    }
+
+                    // Actualiza el carrito en el almacenamiento local
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+                    // Llama a la funciÃ³n para volver a mostrar los elementos del carrito
+                    mostrarElementosCarrito();
+                    mostrarMensajeCarritoVacio();
+                });
+
+                deleteButton.addEventListener('click', () => {
+                    // Obtiene la cantidad del producto en el carrito
+                    const productQuantity = item.quantity || 1;
+
+                    // Disminuye el contador del carrito por la cantidad de productos eliminados
+                    let cartItemCount = parseInt(localStorage.getItem('contadorCarro'), 10) || 0;
+                    cartItemCount -= productQuantity;
+                    // Si el contador del carrito es menor que cero, establecerlo en cero
+                    if (cartItemCount < 0) {
+                        cartItemCount = 0;
+                    }
+                    // Actualiza el contador del carrito y el localStorage
+                    cartCount.textContent = cartItemCount;
+                    localStorage.setItem('contadorCarro', cartItemCount);
+
+                    // Elimina el producto del carrito
+                    carrito.splice(index, 1);
+
+                    // Actualiza el carrito en el almacenamiento local
+                    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+                    // Emitir un evento personalizado para notificar que el contador del carrito ha cambiado
+                    const cartUpdateEvent = new Event('cartUpdated');
+                    window.dispatchEvent(cartUpdateEvent);
+
+                    // Llama a la funciÃ³n para volver a mostrar los elementos del carrito
+                    mostrarElementosCarrito();
+                    mostrarMensajeCarritoVacio();
+
+                    // Crear alerta de Bootstrap
+                    const alertDiv = document.createElement('div');
+                    alertDiv.classList.add('alert', 'alert-info', 'alert-dismissible', 'fade', 'position-fixed', 'bottom-0', 'end-0', 'show'); // AÃ±adir la clase 'show' para mostrar la alerta
+                    alertDiv.setAttribute('role', 'alert');
+                    alertDiv.style.zIndex = 1050; // Ajustar el z-index para que aparezca sobre otros elementos
+
+                    alertDiv.innerHTML = `
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    El producto ha sido eliminado exitosamente..
+                `;
+
+                    document.body.appendChild(alertDiv);
+
+                    // Desaparece despuÃ©s de 3 segundos
+                    setTimeout(() => {
+                        alertDiv.remove();
+                    }, 3000);
+                });
+
+
+                totalPrice += item.price * (item.quantity || 1);
+            });
+
+            // Actualiza el precio total en la interfaz
+            totalPriceElement.textContent = `Total: $${totalPrice.toFixed(2)}`;
+
+        }
+
+        mostrarElementosCarrito();
+        // Escucha el evento personalizado para actualizar el carrito
+        window.addEventListener('cartUpdated', mostrarElementosCarrito);
+    });
+</script>
+
+<script>
+
+    //METODO DE VACIAR CARRITO
+    var contadorInicial = localStorage.getItem('contadorCarro');
+    function vaciar() {
+        // Limpia los elementos del carrito en el localStorage
+        localStorage.removeItem('carrito');
+
+
+        // Establece el contador del carrito en 0 en la interfaz de usuario
+        cartCount.textContent = '0';
+        contadorInicial = 0;
+
+        // Emitir un evento personalizado para notificar que el contador del carrito ha cambiado
+        const cartUpdateEvent = new Event('cartUpdated');
+        window.dispatchEvent(cartUpdateEvent);
+
+        // Limpia la lista de elementos del carrito en la interfaz
+        cartItemsContainer.innerHTML = '';
+        totalPriceElement.textContent = 'Total: $0.00';
+        // Muestra un mensaje si el carrito está vacío
+        mostrarMensajeCarritoVacio();
+    }
+
+    //METODO DE MODAL RECUPERA LOS DATOS DEL CARRITO
+    document.getElementById('openModalButton').addEventListener('click', function () {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const hiddenInput = document.getElementById('productosData');
+        const hiddenInput2 = document.getElementById('subtotalData');
+        const precioTotal = carrito.reduce((total, item) => total + (item.price * (item.quantity || 1)), 0);
+
+        if (precioTotal > 0) {
+            hiddenInput.value = JSON.stringify(carrito);
+            hiddenInput2.value = precioTotal.toFixed(2);
+            const carritoModal = new bootstrap.Modal(document.getElementById('vaciarCarritoModal'), {});
+            carritoModal.show();
+        } else {
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-warning', 'position-fixed', 'bottom-0', 'end-0');
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.style.zIndex = 1050; // Ajustar el z-index para que aparezca sobre otros elementos
+
+            alertDiv.textContent = '¡Atención! No hay productos en el carrito..';
+
+            document.body.appendChild(alertDiv);
+
+            // Eliminar la alerta después de un tiempo
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+    });
+
+    //METODO QUE ENVIA EL FORMULARIO
+    document.getElementById('vaciarCarritoButton').addEventListener('click', function () {
+        const id = document.getElementById('cedula').value;
+        // Asigna el valor de la cédula al campo oculto del formulario
+        document.getElementById('clienteId').value = id;
+        // Envía el formulario
+        var form = document.getElementById('formulario');
+        form.submit();
+        localStorage.setItem('contadorCarro', 0);
+        vaciar();
+    });
+
+</script>

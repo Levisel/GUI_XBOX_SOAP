@@ -1,0 +1,237 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+    var imagePath = Url.Content("https://fvelasco.neocities.org/images/xbox2.jpg");
+}
+
+<header class="bg-dark py-5" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('@imagePath'); background-size: cover; background-position: center;">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2">Descubre una nueva forma de jugar con Xbox Game Pass</h1>
+                    <p class="lead text-white-50 mb-4">Accede a una biblioteca en constante crecimiento de juegos de alta calidad con Xbox Game Pass. ¡Descubre, descarga y juega!</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features" style="background-color: #107c10 !important; border-color: #107c10 !important;">Empezar</a>
+                        <a class="btn btn-outline-light btn-lg px-4" href="https://www.xbox.com/es-ES/xbox-game-pass#faq">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    .feature {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 4rem;
+        width: 4rem;
+        font-size: 2rem;
+    }
+</style>
+
+<!-- Sección de características-->
+<section class="py-5 border-bottom" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style="background-color: #107c10 !important;"><i class="bi bi-controller"></i></div>
+                <h2 class="h4 fw-bolder">Acceso ilimitado a juegos</h2>
+                <p>Explora una biblioteca con cientos de juegos para Xbox, PC y dispositivos móviles. Con Xbox Game Pass, siempre tendrás algo nuevo para jugar.</p>
+                <a class="text-decoration-none" href="#!">
+                    Juega ahora
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style="background-color: #107c10 !important;"><i class="bi bi-gift-fill"></i></div>
+                <h2 class="h4 fw-bolder">Nuevos juegos agregados regularmente</h2>
+                <p>Con Xbox Game Pass, siempre estarás al día con los últimos lanzamientos. Descubre nuevos juegos cada mes y juega antes que nadie.</p>
+                <a class="text-decoration-none" href="#!">
+                    Explora nuevos juegos
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3" style="background-color: #107c10 !important;"><i class="bi bi-cloud-download-fill"></i></div>
+                <h2 class="h4 fw-bolder">Descargas ilimitadas</h2>
+                <p>Descarga tus juegos favoritos y juega sin conexión en cualquier momento y en cualquier lugar. Con Xbox Game Pass, la diversión nunca se detiene.</p>
+                <a class="text-decoration-none" href="#!">
+                    Descubre más
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="bg-light py-5 border-bottom">
+    <div class="container px-md-5 my-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Elige tu suscripción</h2>
+            <p class="lead mb-0">Accede a Xbox Game Pass con nuestras opciones de suscripción flexibles</p>
+        </div>
+        <div class="row gx-md-5 justify-content-center">
+            <!-- Tarjeta de suscripción mensual-->
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-5 d-flex flex-column">
+                        <div class="small text-uppercase fw-bold text-muted">PC</div>
+                        <div class="mb-3">
+                            <span class="display-4 fw-bold">$9.99</span>
+                            <span class="text-muted">/ mes.</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                <strong>1 usuario</strong>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Cientos de juegos de alta calidad en PC
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Nuevos juegos en día de lanzamiento
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Descuentos y ofertas exclusivas
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Membresia de EA Play
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="d-grid"><a class="btn btn-primary" href="/Home/Planes" style="background-color: #107c10 !important; border-color: #107c10 !important;">Ver Ahora</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pricing card enterprise-->
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-5 d-flex flex-column">
+                        <div class="small text-uppercase fw-bold text-muted">Core</div>
+                        <div class="mb-3">
+                            <span class="display-4 fw-bold">$9.99</span>
+                            <span class="text-muted">/ mes.</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                <strong>1 usuario</strong>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Multijugador online en consola
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Catalogo de más de 25 juegos
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Descuentos y ofertas exclusivas
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="d-grid"><a class="btn btn-primary" href="/Home/Planes" style="background-color: #107c10 !important; border-color: #107c10 !important;">Ver Ahora</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pricing card pro-->
+            <div class="col-lg-6 col-xl-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-5 d-flex flex-column">
+                        <div class="small text-uppercase fw-bold">
+                            <i class="bi bi-star-fill text-warning"></i>
+                           <strong>Ultimate</strong>
+                        </div>
+                        <div class="mb-3">
+                            <span class="display-4 fw-bold">$16.99</span>
+                            <span class="text-muted">/ mes.</span>
+                        </div>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                <strong>1 usuario</strong>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Cientos de juegos de alta calidad en consola, PC y la nube
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Nuevos juegos en día de lanzamiento
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Descuentos, ofertas y ventajas exclusivas
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Multijugador online en consola
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check text-primary" style="color: #107c10 !important;"></i>
+                                Membresia de EA Play
+                            </li>
+                        </ul>
+                        <div class="mt-auto">
+                            <div class="d-grid"><a class="btn btn-primary" href="/Home/Planes" style="background-color: #107c10 !important; border-color: #107c10 !important;">Ver Ahora</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Sección de reseñas-->
+<section class="py-5 border-bottom">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder">Reseñas de usuarios</h2>
+            <p class="lead mb-0">Nuestros usuarios adoran Xbox Game Pass</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <!-- Testimonio 1-->
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1" style="color: #107c10 !important;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">Game Pass es lo mejor que le ha pasado a la industria de los videojuegos. Lástima que tanta gente en nuestro país se aferre a la marca de Sony como si le debiesen parte de su vida y no se den la oportunidad de probar un sistema que da horas y horas de diversión por muy poco dinero. Allá cada cual.</p>
+                                <div class="small text-muted">- Enrique, España</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 2-->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1" style="color: #107c10 !important;"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">El mejor servicio de la historia de los videojuegos. Algo simplemente increíble. Impensable hace apenas unos años. 2000% recomendable. Si te gustan los videojuegos tienes que suscribirte si o si.</p>
+                                <div class="small text-muted">- Marcos, México</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

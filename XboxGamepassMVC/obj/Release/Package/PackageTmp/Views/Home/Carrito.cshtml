@@ -1,0 +1,317 @@
+﻿@{
+    ViewBag.Title = "Carrito";
+}
+
+<h2>Carrito</h2>
+
+@*CONTENIDO*@
+
+<style>
+
+
+    .carrito-items {
+        margin: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #carrito-lista {
+        list-style: none;
+        padding: 0;
+    }
+
+    #carrito-lista li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    #precio {
+        text-align: right;
+        font-weight: bold;
+    }
+
+    #openModalButton{
+        display: block;
+        margin: 100px auto; /* Alineación horizontal en el centro */
+        padding: 7px 10px;
+        font-weight: 550;
+    }
+
+    /* Estilos para cada elemento de la lista del carrito */
+    .product-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px 0;
+        height: 100px; /* Ajusta la altura deseada */
+        overflow: hidden; /* Evita las barras de desplazamiento y oculta contenido adicional */
+    }
+
+    /* Estilos para la imagen del producto */
+    .item-image {
+        max-width: 80px; /* Ajusta el ancho de la imagen según sea necesario */
+        margin-right: 10px; /* Espacio entre la imagen y otros elementos */
+    }
+
+    /* Estilos para el nombre del producto */
+    .item-name {
+        font-weight: bold;
+        margin-left: 10px;
+        position: absolute;
+        margin-left: 200px;
+    }
+
+    /* Estilos para el precio, la cantidad y los botones de aumento y disminución */
+    .item-details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinea todos los elementos verticalmente en el centro */
+    }
+
+    /* Estilos para el precio del producto */
+    .item-price {
+        font-weight: bold;
+        color: #107c10;
+        position: absolute;
+        margin-left: 595px;
+    }
+
+    /* Estilos para la cantidad del producto */
+    .item-quantity {
+        font-size: 0.9rem;
+        background-color: #0000002a;
+        padding: 5px 6px;
+        border-radius: 5px;
+        position: absolute;
+        margin-left: 440px;
+    }
+
+    /* Estilos para los botones de aumentar, disminuir y eliminar */
+    .boton-aumentar {
+        background-color: #0000002a;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 1px 10px;
+        border-radius: 7px;
+        margin-top: 5px;
+        position: absolute;
+        margin-left: 800px;
+    }
+    .boton-disminuir {
+        background-color: #0000002a;
+        border: none;
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 1px 10px;
+        border-radius: 7px;
+        margin-top: 5px;
+        position: absolute;
+        margin-left: 900px;
+
+    }
+    .boton-aumentar:hover, .boton-disminuir:hover {
+        transform: scale(1.180);
+    }
+
+    /* Estilos para el botón de eliminar (ícono de basurero) */
+    .delete-button {
+        background-color: #ff0000;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1100px;
+        position: absolute;
+
+}
+
+/* Estilos para el ícono de basurero en el botón de eliminar */
+.delete-button i {
+    color: white;
+    font-size: 1rem;
+}
+
+.delete-button:hover {
+    transform: scale(1.180);
+}
+/* Tus estilos para pantallas más grandes aquí */
+
+/* Media query para dispositivos móviles (ancho máximo de 767px) */
+@@media screen and (max-width: 1426px) {
+    .carrito-items {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #carrito-lista li {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        height: auto;
+    }
+
+    .item-name {
+        position: relative;
+        margin-left: 0;
+    }
+
+    .item-price{
+        position: relative;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .item-quantity{
+        position: relative;
+        margin-left: -100px;
+        margin-top: 10px;
+
+    }
+    .boton-aumentar{
+        position: relative;
+        margin-left: 10px;
+        margin-top: -32px;
+    }
+    .boton-disminuir{
+        position: relative;
+        margin-left: 120px;
+        margin-top: -31px;
+    }
+    .delete-button{
+        position: relative;
+        margin-left: 280px;
+        margin-top: -20px;
+        transform: scale(1.180);
+    }
+    #openModalButton {
+        width: 50%; /* Ancho completo para dispositivos móviles */
+        max-width: 300px;
+        cursor: pointer;
+    }
+</style>
+
+
+@using (Html.BeginForm("Comprar", "Home", FormMethod.Post, new { id = "formulario" }))
+{
+    <!-- Agrega campos ocultos para almacenar los datos necesarios -->
+    @Html.Hidden("productosData")
+    @Html.Hidden("subtotalData")
+    @Html.Hidden("clienteId")
+
+    <div class="carrito-items">
+        <ul id="carrito-lista">
+            <!-- Los elementos del carrito se mostrarán aquí -->
+        </ul>
+        <p id="precio">Total: $0.00</p>
+    </div>
+    <button id="openModalButton" type="button" class="btn btn-success">Comprar</button>
+}
+
+<!-- Modal -->
+<div class="modal fade" id="vaciarCarritoModal" tabindex="-1" aria-labelledby="vaciarCarritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vaciarCarritoModalLabel">Comprar Suscripción</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor, ingrese su cédula de identidad (CI):</p>
+                <input type="text" class="form-control" id="cedula" maxlength="10" pattern="[0-9]*">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button id="vaciarCarritoButton" type="button" class="btn btn-info">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    //METODO DE VACIAR CARRITO
+    var contadorInicial = localStorage.getItem('contadorCarro');
+    function vaciar() {
+        // Limpia los elementos del carrito en el localStorage
+        localStorage.removeItem('carrito');
+
+
+        // Establece el contador del carrito en 0 en la interfaz de usuario
+        cartCount.textContent = '0';
+        contadorInicial = 0;
+
+        // Emitir un evento personalizado para notificar que el contador del carrito ha cambiado
+        const cartUpdateEvent = new Event('cartUpdated');
+        window.dispatchEvent(cartUpdateEvent);
+
+        // Limpia la lista de elementos del carrito en la interfaz
+        cartItemsContainer.innerHTML = '';
+        totalPriceElement.textContent = 'Total: $0.00';
+        // Muestra un mensaje si el carrito está vacío
+        mostrarMensajeCarritoVacio();
+    }
+
+    //METODO DE MODAL RECUPERA LOS DATOS DEL CARRITO
+    document.getElementById('openModalButton').addEventListener('click', function () {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const hiddenInput = document.getElementById('productosData');
+        const hiddenInput2 = document.getElementById('subtotalData');
+        const precioTotal = carrito.reduce((total, item) => total + (item.price * (item.quantity || 1)), 0);
+
+        if (precioTotal > 0) {
+            hiddenInput.value = JSON.stringify(carrito);
+            hiddenInput2.value = precioTotal.toFixed(2);
+            const carritoModal = new bootstrap.Modal(document.getElementById('vaciarCarritoModal'), {});
+            carritoModal.show();
+        } else {
+            const alertDiv = document.createElement('div');
+            alertDiv.classList.add('alert', 'alert-warning', 'position-fixed', 'bottom-0', 'end-0');
+            alertDiv.setAttribute('role', 'alert');
+            alertDiv.style.zIndex = 1050; // Ajustar el z-index para que aparezca sobre otros elementos
+
+            alertDiv.textContent = '¡Atención! No hay productos en el carrito..';
+
+            document.body.appendChild(alertDiv);
+
+            // Eliminar la alerta después de un tiempo
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 3000);
+        }
+    });
+
+    //METODO QUE ENVIA EL FORMULARIO
+    document.getElementById('vaciarCarritoButton').addEventListener('click', function () {
+        const id = document.getElementById('cedula').value;
+        // Asigna el valor de la cédula al campo oculto del formulario
+        document.getElementById('clienteId').value = id;
+        // Envía el formulario
+        var form = document.getElementById('formulario');
+        form.submit();
+        localStorage.setItem('contadorCarro', 0);
+        vaciar();
+    });
+
+</script>

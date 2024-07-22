@@ -1,0 +1,58 @@
+﻿@model XboxGamepassMVC.Models.ModelCliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cli_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cli_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cli_Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cli_Apellido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cli_BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cli_BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cli_Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cli_Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cli_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cli_Email)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Cli_Cedula }, new { @class = "btn btn-primary" }) 
+    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+</p>
+

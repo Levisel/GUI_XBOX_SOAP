@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3FF80A6A-0183-4564-8B3C-C446D6312824}|XboxGamepassMVC\\XboxGamepassMVC.csproj|C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\xboxgamepassmvc\\views\\home\\carrito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FF80A6A-0183-4564-8B3C-C446D6312824}|XboxGamepassMVC\\XboxGamepassMVC.csproj|solutionrelative:xboxgamepassmvc\\views\\home\\carrito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FF80A6A-0183-4564-8B3C-C446D6312824}|XboxGamepassMVC\\XboxGamepassMVC.csproj|c:\\users\\fvela\\onedrive\\documents\\c# proyects\\gui_xboxgamepass_mvc\\xboxgamepassmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3FF80A6A-0183-4564-8B3C-C446D6312824}|XboxGamepassMVC\\XboxGamepassMVC.csproj|solutionrelative:xboxgamepassmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\XboxGamepassMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "XboxGamepassMVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\XboxGamepassMVC\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "XboxGamepassMVC\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAOEAAAAAAAAAAAAAAPUAAABvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-08T00:48:52.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Carrito.cshtml",
+              "DocumentMoniker": "C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\XboxGamepassMVC\\Views\\Home\\Carrito.cshtml",
+              "RelativeDocumentMoniker": "XboxGamepassMVC\\Views\\Home\\Carrito.cshtml",
+              "ToolTip": "C:\\Users\\fvela\\OneDrive\\Documents\\C# Proyects\\GUI_XboxGamepass_MVC\\XboxGamepassMVC\\Views\\Home\\Carrito.cshtml",
+              "RelativeToolTip": "XboxGamepassMVC\\Views\\Home\\Carrito.cshtml",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAEwAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-24T23:11:53.286Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

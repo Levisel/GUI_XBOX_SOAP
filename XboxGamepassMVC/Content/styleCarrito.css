@@ -1,0 +1,203 @@
+
+.carrito-items {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#carrito-lista {
+    list-style: none;
+    padding: 0;
+}
+
+#carrito-lista li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#precio {
+    text-align: right;
+    font-weight: bold;
+}
+
+#openModalButton{
+    display: block;
+    margin: 100px auto; /* Alineación horizontal en el centro */
+    padding: 7px 10px;
+    font-weight: 550;
+}
+
+/* Estilos para cada elemento de la lista del carrito */
+.product-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    height: 100px; /* Ajusta la altura deseada */
+    overflow: hidden; /* Evita las barras de desplazamiento y oculta contenido adicional */
+}
+
+/* Estilos para la imagen del producto */
+.item-image {
+    max-width: 80px; /* Ajusta el ancho de la imagen según sea necesario */
+    margin-right: 10px; /* Espacio entre la imagen y otros elementos */
+}
+
+/* Estilos para el nombre del producto */
+.item-name {
+    font-weight: bold;
+    margin-left: 10px;
+    position: absolute;
+    margin-left: 200px;
+}
+
+/* Estilos para el precio, la cantidad y los botones de aumento y disminución */
+.item-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea todos los elementos verticalmente en el centro */
+}
+
+/* Estilos para el precio del producto */
+.item-price {
+    font-weight: bold;
+    color: #107c10;
+    position: absolute;
+    margin-left: 595px;
+}
+
+/* Estilos para la cantidad del producto */
+.item-quantity {
+    font-size: 0.9rem;
+    background-color: #0000002a;
+    padding: 5px 6px;
+    border-radius: 5px;
+    position: absolute;
+    margin-left: 440px;
+}
+
+/* Estilos para los botones de aumentar, disminuir y eliminar */
+.boton-aumentar {
+    background-color: #0000002a;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 1px 10px;
+    border-radius: 7px;
+    margin-top: 5px;
+    position: absolute;
+    margin-left: 800px;
+}
+.boton-disminuir {
+    background-color: #0000002a;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 1px 10px;
+    border-radius: 7px;
+    margin-top: 5px;
+    position: absolute;
+    margin-left: 900px;
+
+}
+.boton-aumentar:hover, .boton-disminuir:hover {
+    transform: scale(1.180);
+}
+
+/* Estilos para el botón de eliminar (ícono de basurero) */
+.delete-button {
+    background-color: #ff0000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1100px;
+    position: absolute;
+
+}
+
+/* Estilos para el ícono de basurero en el botón de eliminar */
+.delete-button i {
+    color: white;
+    font-size: 1rem;
+}
+
+.delete-button:hover {
+    transform: scale(1.180);
+}
+/* Tus estilos para pantallas más grandes aquí */
+
+/* Media query para dispositivos móviles (ancho máximo de 767px) */
+@media screen and (max-width: 1426px) {
+    .carrito-items {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #carrito-lista li {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        padding: 10px;
+        height: auto;
+    }
+
+    .item-name {
+        position: relative;
+        margin-left: 0;
+    }
+
+    .item-price{
+        position: relative;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .item-quantity{
+        position: relative;
+        margin-left: -100px;
+        margin-top: 10px;
+
+    }
+    .boton-aumentar{
+        position: relative;
+        margin-left: 10px;
+        margin-top: -32px;
+    } 
+    .boton-disminuir{
+        position: relative;
+        margin-left: 120px;
+        margin-top: -31px;
+    } 
+    .delete-button{
+        position: relative;
+        margin-left: 280px;
+        margin-top: -20px;
+        transform: scale(1.180);
+    } 
+    #openModalButton {
+        width: 50%; /* Ancho completo para dispositivos móviles */
+        max-width: 300px;
+        cursor: pointer;
+    }
+}
