@@ -1,4 +1,4 @@
-# Interfaz Gráfica para la Gestión de la API de Xbox Game Pass 🎮
+# Interfaz Gráfica para la Gestión de la API SOAP de Xbox Game Pass 🎮
 
 ## Descripción 📄
 
